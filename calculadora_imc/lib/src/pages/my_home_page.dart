@@ -1,6 +1,12 @@
 import 'dart:ui';
 
+// archivos de flutter
 import 'package:flutter/material.dart';
+
+// archivos propios
+import 'package:calculadora_imc/src/widgets/row_altura.dart';
+import 'package:calculadora_imc/src/widgets/row_peso.dart';
+import 'package:calculadora_imc/src/widgets/row_botones.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -32,105 +38,19 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            _rowAltura(),
-            const SizedBox(
+          children: const [
+            MyRowAltura(),
+            SizedBox(
               height: 25.0,
             ),
-            _rowPeso(),
+            MyRowPeso(),
+            SizedBox(
+              height: 40.0,
+            ),
+            MyRowBotones(),
           ],
         ), // columna principal
       ),
-    );
-  }
-
-  //*************************************
-  // WIDGET ROW ALTURA
-  //*************************************
-  Row _rowAltura() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        const Text(
-          'Altura',
-          style: TextStyle(fontSize: 20.0),
-        ),
-        /*
-        El TextField dentro de una Row se necesita
-        poner dentro de un Expanded sino falla la 
-        renderización del TextField
-        */
-        SizedBox(
-          width: 180.0,
-          child: Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: TextField(
-                style: const TextStyle(fontSize: 25.0),
-                keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
-                decoration: const InputDecoration(
-                  hintText: '0.00',
-                  helperText: 'Ejemplo 1.73',
-                ),
-                onChanged: (String valor) {
-                  //TODO: guardar dato
-                },
-              ),
-            ),
-          ),
-        ),
-        const Text(
-          'metros',
-          style: TextStyle(fontSize: 20.0),
-        ),
-      ],
-    );
-  }
-
-  //*************************************
-  // WIDGET ROW PESO
-  //*************************************
-  Row _rowPeso() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        const Text(
-          'Peso',
-          style: TextStyle(fontSize: 20.0),
-        ),
-        /*
-        El TextField dentro de una Row se necesita
-        poner dentro de un Expanded sino falla la 
-        renderización del TextField
-        */
-        SizedBox(
-          width: 180.0,
-          child: Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25.0),
-              child: TextField(
-                style: const TextStyle(fontSize: 25.0),
-                keyboardType: TextInputType.number,
-                textAlign: TextAlign.center,
-                decoration: const InputDecoration(
-                  hintText: '0.00',
-                  helperText: 'Ejemplo 76',
-                ),
-                onChanged: (String valor) {
-                  //TODO: guardar dato
-                },
-              ),
-            ),
-          ),
-        ),
-        const Text(
-          'kilos',
-          style: TextStyle(fontSize: 20.0),
-        ),
-      ],
     );
   }
 }
