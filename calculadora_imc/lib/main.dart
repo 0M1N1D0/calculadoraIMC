@@ -10,7 +10,11 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Material App',
-      home: HomePage(),
+      home: SafeArea(
+        top: true,
+        bottom: true,
+        child: HomePage(),
+      ),
     );
   }
 }
