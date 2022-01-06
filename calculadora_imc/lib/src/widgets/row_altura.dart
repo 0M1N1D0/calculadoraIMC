@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+// importa la variable altura
+import 'package:calculadora_imc/src/pages/my_home_page.dart';
+
 class MyRowAltura extends StatefulWidget {
   const MyRowAltura({
     Key? key,
@@ -39,7 +42,7 @@ class _MyRowAlturaState extends State<MyRowAltura> {
                   helperText: 'Ejemplo 1.73',
                 ),
                 onChanged: (String valor) {
-                  //TODO: guardar dato
+                  altura = double.parse(valor);
                 },
               ),
             ),

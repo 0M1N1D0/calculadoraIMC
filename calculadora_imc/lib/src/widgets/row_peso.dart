@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+// para importar la variable peso
+import 'package:calculadora_imc/src/pages/my_home_page.dart';
+
 class MyRowPeso extends StatefulWidget {
   const MyRowPeso({
     Key? key,
@@ -39,7 +42,7 @@ class _MyRowPesoState extends State<MyRowPeso> {
                   helperText: 'Ejemplo 76',
                 ),
                 onChanged: (String valor) {
-                  //TODO: guardar dato
+                  peso = double.parse(valor);
                 },
               ),
             ),

@@ -1,4 +1,4 @@
-import 'dart:ui';
+//import 'dart:ui';
 
 // archivos de flutter
 import 'package:flutter/material.dart';
@@ -7,6 +7,13 @@ import 'package:flutter/material.dart';
 import 'package:calculadora_imc/src/widgets/row_altura.dart';
 import 'package:calculadora_imc/src/widgets/row_peso.dart';
 import 'package:calculadora_imc/src/widgets/row_botones.dart';
+import 'package:calculadora_imc/src/widgets/linear_indicator.dart';
+
+// variables globales
+double peso = 0;
+double altura = 0;
+double imc = 0;
+//double porcentaje = 0;
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -48,6 +55,10 @@ class _HomePageState extends State<HomePage> {
               height: 40.0,
             ),
             MyRowBotones(),
+            SizedBox(
+              height: 30.0,
+            ),
+            MyLinearPercentIndicator(),
           ],
         ), // columna principal
       ),

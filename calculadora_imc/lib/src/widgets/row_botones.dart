@@ -2,6 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+import 'package:calculadora_imc/src/pages/my_home_page.dart';
+import 'package:calculadora_imc/src/classes/imc.dart';
+
 class MyRowBotones extends StatefulWidget {
   const MyRowBotones({Key? key}) : super(key: key);
 
@@ -46,7 +49,14 @@ class _MyRowBotonesState extends State<MyRowBotones> {
     return ElevatedButton(
       //style: ButtonStyle(shape: BorderRadius.circular(5)),
       onPressed: () {
-        // TODO: hacer cálculo
+        setState(() {
+          // instanciando la clase para el cálculo
+          IndiceMasaCorporal objIMC =
+              IndiceMasaCorporal(altura: altura, peso: peso);
+          // recibiendo el resultado
+          imc = double.parse(objIMC.calculoIMCtoString());
+          //print(imc);
+        });
       },
       child: const Text(
         'Calcular',
