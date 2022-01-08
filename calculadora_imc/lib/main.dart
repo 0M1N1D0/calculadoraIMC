@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:calculadora_imc/src/pages/my_home_page.dart';
+import 'package:calculadora_imc/src/providers/actualiza_imc.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Material App',
-      home: SafeArea(
-        top: true,
-        bottom: true,
-        child: HomePage(),
+    return MultiProvider(
+      // ----- implementación del provider
+      providers: [ChangeNotifierProvider(create: (context) => ActualizaIMC())],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Material App',
+        home: SafeArea(
+          top: true,
+          bottom: true,
+          child: HomePage(),
+        ),
       ),
     );
   }

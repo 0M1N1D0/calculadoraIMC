@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 
 import 'package:percent_indicator/linear_percent_indicator.dart';
@@ -15,6 +14,10 @@ class MyLinearPercentIndicator extends StatefulWidget {
 
 class _MyLinearPercentIndicatorState extends State<MyLinearPercentIndicator> {
   double percent = 0;
+
+  // ***********************************************
+  // INIT STATE DEL LINEARPERCENTINDICATOR
+  // ***********************************************
   @override
   void initState() {
     Timer? timer;
@@ -25,18 +28,7 @@ class _MyLinearPercentIndicatorState extends State<MyLinearPercentIndicator> {
           timer!.cancel();
           // percent=0;
         }
-        // if (imc <= 16 && imc >= 0.1) {
-        //   // desnutrición severa
-        //   percent = 0.16;
-        // } else if (imc >= 40) {
-        //   // obesidad tipo III
-        //   percent = 1;
-        // } else if (imc == 0) {
-        //   percent = 0;
-        // } else {
-        //   percent = 1 - ((40 - imc) / 24);
-        // }
-        //percent = 1;
+
         if (imc <= 16 && imc >= 0.1) {
           // desnutricion severa
           percent = 0.01;
@@ -87,7 +79,7 @@ class _MyLinearPercentIndicatorState extends State<MyLinearPercentIndicator> {
         child: SizedBox(
           width: 68,
           child: Text(
-            'Obesidad Tipo III',
+            'Obesidad Tipo 3',
             style: TextStyle(fontSize: 12.0),
             textAlign: TextAlign.center,
           ),

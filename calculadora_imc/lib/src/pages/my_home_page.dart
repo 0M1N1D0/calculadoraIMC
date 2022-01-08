@@ -1,6 +1,7 @@
 //import 'dart:ui';
 
 // archivos de flutter
+
 import 'package:flutter/material.dart';
 
 // archivos propios
@@ -8,11 +9,13 @@ import 'package:calculadora_imc/src/widgets/row_altura.dart';
 import 'package:calculadora_imc/src/widgets/row_peso.dart';
 import 'package:calculadora_imc/src/widgets/row_botones.dart';
 import 'package:calculadora_imc/src/widgets/linear_indicator.dart';
+import 'package:calculadora_imc/src/widgets/card_result.dart';
 
 // variables globales
 double peso = 0;
 double altura = 0;
 double imc = 0;
+String resultado = 'Sin resultado';
 //double porcentaje = 0;
 
 class HomePage extends StatefulWidget {
@@ -41,7 +44,7 @@ class _HomePageState extends State<HomePage> {
           vertical: 10.0,
           horizontal: 20.0,
         ), // margen del container
-        //color: Colors.red,
+
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.center,
           // crossAxisAlignment: CrossAxisAlignment.center,
@@ -59,6 +62,10 @@ class _HomePageState extends State<HomePage> {
               height: 30.0,
             ),
             MyLinearPercentIndicator(),
+            SizedBox(
+              height: 20.0,
+            ),
+            CardResults(),
           ],
         ), // columna principal
       ),

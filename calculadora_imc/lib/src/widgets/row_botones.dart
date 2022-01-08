@@ -1,9 +1,11 @@
-import 'dart:ui';
+//import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:calculadora_imc/src/pages/my_home_page.dart';
 import 'package:calculadora_imc/src/classes/imc.dart';
+import 'package:calculadora_imc/src/providers/actualiza_imc.dart';
 
 class MyRowBotones extends StatefulWidget {
   const MyRowBotones({Key? key}) : super(key: key);
@@ -15,11 +17,17 @@ class MyRowBotones extends StatefulWidget {
 class _MyRowBotonesState extends State<MyRowBotones> {
   @override
   Widget build(BuildContext context) {
+    // ------ instancia provider
+    ActualizaIMC imcProv = Provider.of<ActualizaIMC>(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        _buttonCalcular(),
+        /* 
+          la instancia provider se pasa como argumento
+          al método del boton que hace el cálculo 
+        */
+        _buttonCalcular(imcProv),
         _buttonLimpiar(),
       ],
     );
@@ -45,7 +53,7 @@ class _MyRowBotonesState extends State<MyRowBotones> {
   // METODO BOTON CALCULAR
   // ***********************************
 
-  ElevatedButton _buttonCalcular() {
+  ElevatedButton _buttonCalcular(ActualizaIMC imcProv) {
     return ElevatedButton(
       //style: ButtonStyle(shape: BorderRadius.circular(5)),
       onPressed: () {
@@ -55,7 +63,8 @@ class _MyRowBotonesState extends State<MyRowBotones> {
               IndiceMasaCorporal(altura: altura, peso: peso);
           // recibiendo el resultado
           imc = double.parse(objIMC.calculoIMCtoString());
-          //print(imc);
+          //print(imc );
+          imcProv.imcProviderSet = imc;
         });
       },
       child: const Text(
