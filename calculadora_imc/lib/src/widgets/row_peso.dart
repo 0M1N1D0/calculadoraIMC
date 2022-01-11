@@ -39,7 +39,7 @@ class _MyRowPesoState extends State<MyRowPeso> {
                 textAlign: TextAlign.center,
                 decoration: const InputDecoration(
                   hintText: '0.00',
-                  helperText: 'Ejemplo 76',
+                  helperText: 'Ejemplo 76.0',
                 ),
                 onChanged: (String valor) {
                   peso = double.parse(valor);

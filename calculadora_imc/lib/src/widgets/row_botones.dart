@@ -8,7 +8,7 @@ import 'package:calculadora_imc/src/classes/imc.dart';
 import 'package:calculadora_imc/src/providers/actualiza_imc.dart';
 
 class MyRowBotones extends StatefulWidget {
-  const MyRowBotones({Key? key}) : super(key: key);
+  const MyRowBotones(String resultado, {Key? key}) : super(key: key);
 
   @override
   _MyRowBotonesState createState() => _MyRowBotonesState();
@@ -27,7 +27,7 @@ class _MyRowBotonesState extends State<MyRowBotones> {
           la instancia provider se pasa como argumento
           al método del boton que hace el cálculo 
         */
-        _buttonCalcular(imcProv),
+        _buttonCalcular(imcProv, resultado),
         _buttonLimpiar(),
       ],
     );
@@ -53,7 +53,7 @@ class _MyRowBotonesState extends State<MyRowBotones> {
   // METODO BOTON CALCULAR
   // ***********************************
 
-  ElevatedButton _buttonCalcular(ActualizaIMC imcProv) {
+  ElevatedButton _buttonCalcular(ActualizaIMC imcProv, String resultado) {
     return ElevatedButton(
       //style: ButtonStyle(shape: BorderRadius.circular(5)),
       onPressed: () {
@@ -65,6 +65,7 @@ class _MyRowBotonesState extends State<MyRowBotones> {
           imc = double.parse(objIMC.calculoIMCtoString());
           //print(imc );
           imcProv.imcProviderSet = imc;
+          resultado = _obtenerResultado(imc);
         });
       },
       child: const Text(
@@ -72,5 +73,37 @@ class _MyRowBotonesState extends State<MyRowBotones> {
         style: TextStyle(fontSize: 18.0),
       ),
     );
+  }
+
+  String _obtenerResultado(double imc) {
+    if (imc <= 16 && imc >= 0.1) {
+      // desnutricion severa
+      return resultado = 'Desnutrición severa';
+    } else if (imc >= 40) {
+      // obesidad III
+      return resultado = 'Obesidad tipo 3';
+    } else if (imc >= 16.1 && imc <= 18.4) {
+      // desnutricion moderada
+      return resultado = 'Desnutrición moderada';
+    } else if (imc >= 18.5 && imc <= 22) {
+      // bajo peso
+      return resultado = 'Bajo peso';
+    } else if (imc >= 22.1 && imc <= 24.9) {
+      // peso normal
+      return resultado = 'Peso normal';
+    } else if (imc >= 25 && imc <= 29.9) {
+      // sobrepeso
+
+      return resultado = 'Sobrepeso';
+    } else if (imc >= 30 && imc <= 34.9) {
+      // obesidad !
+
+      return resultado = 'Obesidad';
+    } else if (imc != 0) {
+      // obesidad II
+
+      return resultado = 'Obesidad tipo 2';
+    }
+    return 'Sin respuesta';
   }
 }

@@ -1,12 +1,13 @@
+// import 'package:calculadora_imc/src/pages/my_home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:calculadora_imc/src/providers/actualiza_imc.dart';
+import 'package:calculadora_imc/src/pages/my_home_page.dart';
 
 //import 'package:calculadora_imc/src/pages/my_home_page.dart';
 import 'package:provider/provider.dart';
 
 class CardResults extends StatefulWidget {
-  const CardResults({Key? key}) : super(key: key);
-
+  const CardResults(String resultado, {Key? key}) : super(key: key);
   @override
   _CardResultsState createState() => _CardResultsState();
 }
@@ -29,6 +30,16 @@ class _CardResultsState extends State<CardResults> {
               style: const TextStyle(fontSize: 22.0),
             ),
             subtitle: const Text('Tu índice de masa corporal'),
+          ),
+          ListTile(
+            leading: const Icon(Icons.analytics_outlined),
+            title: Text(
+              'Resultado: $resultado',
+              textAlign: TextAlign.start,
+              style: const TextStyle(fontSize: 22.0),
+            ),
+            //subtitle: const Text('Tu índice de masa corporal'),
+            minVerticalPadding: 10.0,
           ),
           Table(),
         ],

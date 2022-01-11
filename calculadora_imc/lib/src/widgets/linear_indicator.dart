@@ -13,6 +13,7 @@ class MyLinearPercentIndicator extends StatefulWidget {
 }
 
 class _MyLinearPercentIndicatorState extends State<MyLinearPercentIndicator> {
+  // obesidad, sobrepeso, peso ideal, etc
   double percent = 0;
 
   // ***********************************************
@@ -31,27 +32,34 @@ class _MyLinearPercentIndicatorState extends State<MyLinearPercentIndicator> {
 
         if (imc <= 16 && imc >= 0.1) {
           // desnutricion severa
+
           percent = 0.01;
         } else if (imc >= 40) {
           // obesidad III
+
           percent = 1;
         } else if (imc >= 16.1 && imc <= 18.4) {
           // desnutricion moderada
+
           percent = 0.16;
         } else if (imc >= 18.5 && imc <= 22) {
           // bajo peso
+
           percent = 0.33;
         } else if (imc >= 22.1 && imc <= 24.9) {
           // peso normal
           percent = 0.49;
         } else if (imc >= 25 && imc <= 29.9) {
           // sobrepeso
+
           percent = 0.7;
         } else if (imc >= 30 && imc <= 34.9) {
           // obesidad !
+
           percent = 0.83;
         } else if (imc != 0) {
           // obesidad II
+
           percent = .95;
         }
       });

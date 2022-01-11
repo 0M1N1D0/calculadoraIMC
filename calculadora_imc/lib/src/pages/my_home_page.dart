@@ -39,36 +39,42 @@ class _HomePageState extends State<HomePage> {
       para crear un margen inicial y los elementos no se pongan hasta
       los extremos de la pantalla.
       */
-      body: Container(
-        margin: const EdgeInsets.symmetric(
-          vertical: 10.0,
-          horizontal: 20.0,
-        ), // margen del container
+      /*
+        Todo se metió dentro de un ListView porque a la hora de sacar 
+        el teclado y este tocaba el Card, aparecía un error de espacio. 
+      */
+      body: ListView(children: [
+        Container(
+          margin: const EdgeInsets.symmetric(
+            vertical: 10.0,
+            horizontal: 20.0,
+          ), // margen del container
 
-        child: Column(
-          // mainAxisAlignment: MainAxisAlignment.center,
-          // crossAxisAlignment: CrossAxisAlignment.center,
-          children: const [
-            MyRowAltura(),
-            SizedBox(
-              height: 25.0,
-            ),
-            MyRowPeso(),
-            SizedBox(
-              height: 40.0,
-            ),
-            MyRowBotones(),
-            SizedBox(
-              height: 30.0,
-            ),
-            MyLinearPercentIndicator(),
-            SizedBox(
-              height: 20.0,
-            ),
-            CardResults(),
-          ],
-        ), // columna principal
-      ),
+          child: Column(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            // crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              const MyRowAltura(),
+              const SizedBox(
+                height: 25.0,
+              ),
+              const MyRowPeso(),
+              const SizedBox(
+                height: 40.0,
+              ),
+              MyRowBotones(resultado),
+              const SizedBox(
+                height: 30.0,
+              ),
+              const MyLinearPercentIndicator(),
+              const SizedBox(
+                height: 20.0,
+              ),
+              CardResults(resultado),
+            ],
+          ), // columna principal
+        ),
+      ]),
     );
   }
 }
