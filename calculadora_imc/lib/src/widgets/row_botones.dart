@@ -28,7 +28,7 @@ class _MyRowBotonesState extends State<MyRowBotones> {
           al método del boton que hace el cálculo 
         */
         _buttonCalcular(imcProv, resultado),
-        _buttonLimpiar(),
+        //_buttonLimpiar(),
       ],
     );
   }
@@ -37,17 +37,17 @@ class _MyRowBotonesState extends State<MyRowBotones> {
   // METODO BOTON LIMPIAR
   // ***********************************
 
-  ElevatedButton _buttonLimpiar() {
-    return ElevatedButton(
-      onPressed: () {
-        // TODO: limpiar
-      },
-      child: const Text(
-        'Limpiar',
-        style: TextStyle(fontSize: 18.0),
-      ),
-    );
-  }
+  // ElevatedButton _buttonLimpiar() {
+  //   return ElevatedButton(
+  //     onPressed: () {
+  //       // TODO: limpiar
+  //     },
+  //     child: const Text(
+  //       'Limpiar',
+  //       style: TextStyle(fontSize: 18.0),
+  //     ),
+  //   );
+  // }
 
   // ***********************************
   // METODO BOTON CALCULAR

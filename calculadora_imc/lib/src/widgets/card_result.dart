@@ -41,9 +41,93 @@ class _CardResultsState extends State<CardResults> {
             //subtitle: const Text('Tu índice de masa corporal'),
             minVerticalPadding: 10.0,
           ),
-          Table(),
+          const SizedBox(height: 15),
+          Container(
+            //alignment: Alignment.bottomRight,
+            child: _myTable(),
+            margin: EdgeInsets.only(left: 30.0),
+          ),
+          const SizedBox(height: 15),
         ],
       ),
+    );
+  }
+
+  // *******************************************
+  // TABLA
+  // ********************************************
+  Table _myTable() {
+    return Table(
+      //textDirection: TextDirection.rtl,
+
+      //defaultVerticalAlignment: TableCellVerticalAlignment.,
+      children: [
+        TableRow(
+          children: [
+            _textoMyTable('Descripción', tamanio: 22.0),
+            _textoMyTable('IMC', tamanio: 22.0),
+          ],
+        ),
+        TableRow(
+          children: [
+            _textoMyTable('Desnutrición Severa'),
+            _textoMyTable('menor a 16'),
+          ],
+        ),
+        TableRow(
+          children: [
+            _textoMyTable('Desnutrición Moderada'),
+            _textoMyTable('16.1 - 18.4'),
+          ],
+        ),
+        TableRow(
+          children: [
+            _textoMyTable('Bajo Peso'),
+            _textoMyTable('18.5 - 22'),
+          ],
+        ),
+        TableRow(
+          children: [
+            _textoMyTable('Peso Normal'),
+            _textoMyTable('22.1 - 24.9'),
+          ],
+        ),
+        TableRow(
+          children: [
+            _textoMyTable('Sobrepeso'),
+            _textoMyTable('25 - 29.9'),
+          ],
+        ),
+        TableRow(
+          children: [
+            _textoMyTable('Obesidad Tipo 1'),
+            _textoMyTable('30 - 34.9'),
+          ],
+        ),
+        TableRow(
+          children: [
+            _textoMyTable('Obesidad Tipo 2'),
+            _textoMyTable('35 - 39.9'),
+          ],
+        ),
+        TableRow(
+          children: [
+            _textoMyTable('Obesidad Tipo 3'),
+            _textoMyTable('mayor a 40'),
+          ],
+        ),
+      ],
+    );
+  }
+
+  // *******************************************
+  // TEXTO TABLA
+  // ********************************************
+  Text _textoMyTable(String texto, {double? tamanio}) {
+    return Text(
+      texto,
+      textAlign: TextAlign.center,
+      style: TextStyle(fontSize: tamanio),
     );
   }
 }
