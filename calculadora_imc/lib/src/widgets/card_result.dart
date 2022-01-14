@@ -18,7 +18,7 @@ class _CardResultsState extends State<CardResults> {
     // ---- instancia provider
     ActualizaIMC imcProv = Provider.of<ActualizaIMC>(context);
     return Card(
-      elevation: 2.0,
+      elevation: 5.0,
       //color: Colors.amberAccent,
       child: Column(
         children: [
@@ -45,7 +45,7 @@ class _CardResultsState extends State<CardResults> {
           Container(
             //alignment: Alignment.bottomRight,
             child: _myTable(),
-            margin: EdgeInsets.only(left: 30.0),
+            margin: const EdgeInsets.only(left: 30.0),
           ),
           const SizedBox(height: 15),
         ],
@@ -56,64 +56,95 @@ class _CardResultsState extends State<CardResults> {
   // *******************************************
   // TABLA
   // ********************************************
-  Table _myTable() {
-    return Table(
-      //textDirection: TextDirection.rtl,
-
-      //defaultVerticalAlignment: TableCellVerticalAlignment.,
-      children: [
-        TableRow(
-          children: [
-            _textoMyTable('Descripción', tamanio: 22.0),
-            _textoMyTable('IMC', tamanio: 22.0),
+  DataTable _myTable() {
+    return DataTable(
+      columns: const [
+        DataColumn(
+          label: Text('Descripcion'),
+        ),
+        DataColumn(
+          label: Text('IMC'),
+        ),
+      ],
+      rows: const [
+        DataRow(
+          cells: [
+            DataCell(
+              Text('Desnutrición severa'),
+            ),
+            DataCell(
+              Text('menor a 16'),
+            ),
           ],
         ),
-        TableRow(
-          children: [
-            _textoMyTable('Desnutrición Severa'),
-            _textoMyTable('menor a 16'),
+        DataRow(
+          cells: [
+            DataCell(
+              Text('Desnutrición moderada'),
+            ),
+            DataCell(
+              Text('16.1 - 18.4'),
+            ),
           ],
         ),
-        TableRow(
-          children: [
-            _textoMyTable('Desnutrición Moderada'),
-            _textoMyTable('16.1 - 18.4'),
+        DataRow(
+          cells: [
+            DataCell(
+              Text('Bajo peso'),
+            ),
+            DataCell(
+              Text('18.5 - 22'),
+            ),
           ],
         ),
-        TableRow(
-          children: [
-            _textoMyTable('Bajo Peso'),
-            _textoMyTable('18.5 - 22'),
+        DataRow(
+          cells: [
+            DataCell(
+              Text('Peso normal'),
+            ),
+            DataCell(
+              Text('22.1 - 24.9'),
+            ),
           ],
         ),
-        TableRow(
-          children: [
-            _textoMyTable('Peso Normal'),
-            _textoMyTable('22.1 - 24.9'),
+        DataRow(
+          cells: [
+            DataCell(
+              Text('Sobrepeso'),
+            ),
+            DataCell(
+              Text('25 - 29.9'),
+            ),
           ],
         ),
-        TableRow(
-          children: [
-            _textoMyTable('Sobrepeso'),
-            _textoMyTable('25 - 29.9'),
+        DataRow(
+          cells: [
+            DataCell(
+              Text('Obesidad tipo 1'),
+            ),
+            DataCell(
+              Text('30 - 34.9'),
+            ),
           ],
         ),
-        TableRow(
-          children: [
-            _textoMyTable('Obesidad Tipo 1'),
-            _textoMyTable('30 - 34.9'),
+        DataRow(
+          cells: [
+            DataCell(
+              Text('Obesidad tipo 2'),
+            ),
+            DataCell(
+              Text('35 - 39.9'),
+            ),
           ],
         ),
-        TableRow(
-          children: [
-            _textoMyTable('Obesidad Tipo 2'),
-            _textoMyTable('35 - 39.9'),
-          ],
-        ),
-        TableRow(
-          children: [
-            _textoMyTable('Obesidad Tipo 3'),
-            _textoMyTable('mayor a 40'),
+        DataRow(
+          cells: [
+            DataCell(
+              Text('Obesidad tipo 3'),
+            ),
+            DataCell(
+              Text('mayor a 40'),
+            ),
           ],
         ),
       ],
@@ -123,11 +154,11 @@ class _CardResultsState extends State<CardResults> {
   // *******************************************
   // TEXTO TABLA
   // ********************************************
-  Text _textoMyTable(String texto, {double? tamanio}) {
-    return Text(
-      texto,
-      textAlign: TextAlign.center,
-      style: TextStyle(fontSize: tamanio),
-    );
-  }
+  // Text _textoMyTable(String texto, {double? tamanio}) {
+  //   return Text(
+  //     texto,
+  //     textAlign: TextAlign.center,
+  //     style: TextStyle(fontSize: tamanio),
+  //   );
+  // }
 }

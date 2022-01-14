@@ -54,6 +54,7 @@ class _MyRowBotonesState extends State<MyRowBotones> {
   // ***********************************
 
   ElevatedButton _buttonCalcular(ActualizaIMC imcProv, String resultado) {
+    String _imcString;
     return ElevatedButton(
       //style: ButtonStyle(shape: BorderRadius.circular(5)),
       onPressed: () {
@@ -62,7 +63,11 @@ class _MyRowBotonesState extends State<MyRowBotones> {
           IndiceMasaCorporal objIMC =
               IndiceMasaCorporal(altura: altura, peso: peso);
           // recibiendo el resultado
-          imc = double.parse(objIMC.calculoIMCtoString());
+          // toStringAsFixed(1) corta los decimales a 1
+          _imcString =
+              double.parse(objIMC.calculoIMCtoString()).toStringAsFixed(1);
+          imc = double.parse(_imcString);
+
           //print(imc );
           imcProv.imcProviderSet = imc;
           resultado = _obtenerResultado(imc);
