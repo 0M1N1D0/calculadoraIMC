@@ -1,5 +1,6 @@
 //import 'dart:ui';
 
+import 'package:calculadora_imc/src/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -56,6 +57,9 @@ class _MyRowBotonesState extends State<MyRowBotones> {
   ElevatedButton _buttonCalcular(ActualizaIMC imcProv, String resultado) {
     String _imcString;
     return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        primary: AppTheme.primario,
+      ),
       //style: ButtonStyle(shape: BorderRadius.circular(5)),
       onPressed: () {
         setState(() {
