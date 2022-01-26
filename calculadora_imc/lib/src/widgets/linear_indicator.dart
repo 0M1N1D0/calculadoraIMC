@@ -2,7 +2,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:calculadora_imc/src/pages/my_home_page.dart';
+import 'package:calculadora_imc/src/providers/actualiza_imc.dart';
+//import 'package:calculadora_imc/src/pages/my_home_page.dart';
+import 'package:provider/provider.dart';
 
 class MyLinearPercentIndicator extends StatefulWidget {
   const MyLinearPercentIndicator({Key? key}) : super(key: key);
@@ -15,60 +17,19 @@ class MyLinearPercentIndicator extends StatefulWidget {
 class _MyLinearPercentIndicatorState extends State<MyLinearPercentIndicator> {
   // obesidad, sobrepeso, peso ideal, etc
   double percent = 0;
+  double imc = 0;
 
   // ***********************************************
   // INIT STATE DEL LINEARPERCENTINDICATOR
   // ***********************************************
-  @override
-  void initState() {
-    Timer? timer;
-    timer = Timer.periodic(const Duration(milliseconds: 500), (_) {
-      setState(() {
-        //percent = imc / 30;
-        if (percent >= 100) {
-          timer!.cancel();
-          // percent=0;
-        }
-
-        if (imc <= 16 && imc >= 0.1) {
-          // desnutricion severa
-
-          percent = 0.01;
-        } else if (imc >= 40) {
-          // obesidad III
-
-          percent = 1;
-        } else if (imc >= 16.1 && imc <= 18.4) {
-          // desnutricion moderada
-
-          percent = 0.16;
-        } else if (imc >= 18.5 && imc <= 22) {
-          // bajo peso
-
-          percent = 0.33;
-        } else if (imc >= 22.1 && imc <= 24.9) {
-          // peso normal
-          percent = 0.49;
-        } else if (imc >= 25 && imc <= 29.9) {
-          // sobrepeso
-
-          percent = 0.7;
-        } else if (imc >= 30 && imc <= 34.9) {
-          // obesidad !
-
-          percent = 0.83;
-        } else if (imc != 0) {
-          // obesidad II
-
-          percent = .95;
-        }
-      });
-    });
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
+    ActualizaIMC imcProv = Provider.of<ActualizaIMC>(context);
+    imc = imcProv.imcProvidersetGet;
+
+    // -- provider
+
     return LinearPercentIndicator(
       leading: const Padding(
         padding: EdgeInsets.symmetric(horizontal: 10.0),
@@ -114,6 +75,55 @@ class _MyLinearPercentIndicatorState extends State<MyLinearPercentIndicator> {
         ],
       ),
     );
+  }
+
+  @override
+  void initState() {
+    //double imc = imcProv
+    Timer? timer;
+    timer = Timer.periodic(const Duration(milliseconds: 500), (_) {
+      setState(() {
+        //percent = imc / 30;
+        if (percent >= 100) {
+          timer!.cancel();
+          // percent=0;
+        }
+
+        if (imc <= 16 && imc >= 0.1) {
+          // desnutricion severa
+
+          percent = 0.01;
+        } else if (imc >= 40) {
+          // obesidad III
+
+          percent = 1;
+        } else if (imc >= 16.1 && imc <= 18.4) {
+          // desnutricion moderada
+
+          percent = 0.16;
+        } else if (imc >= 18.5 && imc <= 22) {
+          // bajo peso
+
+          percent = 0.33;
+        } else if (imc >= 22.1 && imc <= 24.9) {
+          // peso normal
+          percent = 0.49;
+        } else if (imc >= 25 && imc <= 29.9) {
+          // sobrepeso
+
+          percent = 0.7;
+        } else if (imc >= 30 && imc <= 34.9) {
+          // obesidad !
+
+          percent = 0.83;
+        } else if (imc != 0) {
+          // obesidad II
+
+          percent = .95;
+        }
+      });
+    });
+    super.initState();
   }
 }
 
